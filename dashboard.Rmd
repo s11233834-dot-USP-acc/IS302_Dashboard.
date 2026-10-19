@@ -1,0 +1,498 @@
+---
+title: "Life Expectancy: Pacific vs World"
+output:
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+    theme: flatly
+runtime: shiny
+---
+
+<!--
+IS302 Group 9 Project: Predicting Life Expectancy
+PART 7: INTERACTIVE DASHBOARD (flexdashboard with Shiny)
+
+This follows R for Data Science, Chapter 29 (R Markdown formats):
+  - flexdashboard builds the layout from headings
+      # (level 1)  = a new page
+      ## (level 2) = a new column
+      ### (level 3) = a new box
+  - "runtime: shiny" in the header lets us add Shiny inputs
+    (sliders, menus) and the charts update when the user changes them
+
+Files needed in the same folder as this .Rmd:
+  pacific_data_cleaned.csv, comparative_data_cleaned.csv  (from our .Rmd)
+  cv_performance.csv                                      (from our .Rmd)
+  pacific_data_raw.csv, comparative_data_raw.csv          (the raw data)
+
+To run it: open this file in RStudio and click "Run Document".
+-->
+
+```{r global, include = FALSE}
+# This chunk runs once, when the dashboard starts.
+# It loads the packages, reads the data and builds the models.
+library(flexdashboard)  # dashboard layout (R4DS Chapter 29)
+library(shiny)          # interactive inputs (R4DS Chapter 29)
+library(dplyr)          # data wrangling
+library(readr)          # read the CSV files
+library(ggplot2)        # charts
+library(ranger)         # random forest (Week 8 lab)
+
+# ---- Read the data ----
+income_order <- c("Low income", "Lower middle income",
+                  "Upper middle income", "High income")
+
+# Read the cleaned data and add log(TB + 1), the same as in our EDA
+read_clean <- function(file, name) {
+  read_csv(file, show_col_types = FALSE) %>%
+    mutate(log_tb  = log(tb_incidence + 1),
+           dataset = name,
+           income_level = factor(income_level, levels = income_order))
+}
+
+pacific     <- read_clean("pacific_data_cleaned.csv", "Pacific") %>% droplevels()
+comparative <- read_clean("comparative_data_cleaned.csv", "Comparative") %>% droplevels()
+
+# Both datasets together, for the charts that compare them
+both_cols <- c("country_name", "year", "life_expectancy", "tb_incidence", "log_tb",
+               "health_expenditure_pct_gdp", "immunization_measles",
+               "fertility_rate", "income_level", "dataset")
+both <- bind_rows(select(pacific, all_of(both_cols)),
+                  select(comparative, all_of(both_cols))) %>%
+  mutate(income_level = factor(income_level, levels = income_order))
+
+# Raw data, only used for the Data gaps page
+pacific_raw     <- read_csv("pacific_data_raw.csv", na = c("", "NA", "N/A", "-999"),
+                            guess_max = Inf, show_col_types = FALSE)
+comparative_raw <- read_csv("comparative_data_raw.csv", na = c("", "NA", "N/A", "-999"),
+                            guess_max = Inf, show_col_types = FALSE)
+
+# Nice names for the variables, shown in the menus
+var_names <- c("TB incidence (per 100,000)"         = "tb_incidence",
+               "log(TB + 1)"                        = "log_tb",
+               "Health spending (% of GDP)"         = "health_expenditure_pct_gdp",
+               "Measles vaccination (%)"            = "immunization_measles",
+               "Fertility rate (births per woman)"  = "fertility_rate")
+
+# Colours, the same as in our EDA
+col_pac <- "#1b6ca8"
+col_cmp <- "#c8531e"
+dataset_colours <- c("Pacific" = col_pac, "Comparative" = col_cmp)
+
+# ---- Build the models (the same models as in Part 4) ----
+model_formula <- life_expectancy ~ log_tb + health_expenditure_pct_gdp +
+  immunization_measles + fertility_rate + income_level
+
+lm_pacific     <- lm(model_formula, data = pacific)
+lm_comparative <- lm(model_formula, data = comparative)
+
+set.seed(314)
+rf_pacific <- ranger(model_formula, data = pacific, num.trees = 500,
+                     importance = "impurity")
+set.seed(314)
+rf_comparative <- ranger(model_formula, data = comparative, num.trees = 500,
+                         importance = "impurity")
+
+# Cross-validation results from our main .Rmd (the cv-performance chunk saves them)
+cv_performance <- read_csv("cv_performance.csv", show_col_types = FALSE) %>%
+  mutate(Test = factor(Test, levels = c("In-sample (training rows)",
+                                        "Random 10-fold CV", "CV by country")),
+         Dataset = factor(Dataset, levels = c("Pacific", "Comparative")))
+
+# ---- Data gaps (from the raw data) ----
+data_gaps <- tibble(
+  variable    = names(pacific_raw),
+  pacific     = colMeans(is.na(pacific_raw)) * 100,
+  comparative = colMeans(is.na(comparative_raw[names(pacific_raw)])) * 100
+) %>%
+  mutate(gap = pacific - comparative) %>%
+  filter(gap >= 20) %>%
+  arrange(desc(gap))
+
+dataset_table <- tibble(
+  ` ` = c("Rows before cleaning", "Rows after cleaning", "Rows kept (%)",
+          "Countries before cleaning", "Countries after cleaning", "Years"),
+  Pacific = c(nrow(pacific_raw), nrow(pacific),
+              round(nrow(pacific) / nrow(pacific_raw) * 100, 1),
+              n_distinct(pacific_raw$country_name), n_distinct(pacific$country_name),
+              paste(range(pacific$year), collapse = " to ")),
+  Comparative = c(nrow(comparative_raw), nrow(comparative),
+                  round(nrow(comparative) / nrow(comparative_raw) * 100, 1),
+                  n_distinct(comparative_raw$country_name), n_distinct(comparative$country_name),
+                  paste(range(comparative$year), collapse = " to "))
+)
+```
+
+About
+=====================================
+
+Column {data-width=600}
+-------------------------------------
+
+### What is this dashboard?
+
+**Predicting Life Expectancy in Pacific Island Countries**
+IS302 Data Analytics, Group 9, University of the South Pacific
+
+This dashboard lets you explore what is linked to life expectancy in Pacific Island countries, and compare them with the rest of the world.
+
+**Research questions**
+
+1. Is TB incidence linked to life expectancy?
+2. Is health spending (% of GDP) linked to life expectancy?
+
+**How to use it**
+
+- **Explore data:** pick a variable and a chart, then filter.
+- **Pacific trends:** see how each Pacific country changed over time.
+- **Model results:** see how well each model predicts, and what it found.
+- **Predict:** enter your own values to get a predicted life expectancy.
+- **Data gaps:** see what data the Pacific is missing.
+
+Column {data-width=400}
+-------------------------------------
+
+### Pacific rows
+
+```{r}
+valueBox(nrow(pacific), caption = paste("Pacific rows from",
+         n_distinct(pacific$country_name), "countries"), color = col_pac)
+```
+
+### Comparative rows
+
+```{r}
+valueBox(nrow(comparative), caption = paste("Comparative rows from",
+         n_distinct(comparative$country_name), "countries"), color = col_cmp)
+```
+
+### Data sources
+
+World Bank health indicators and SPC National Minimum Development Indicators (NMDI) from the Pacific Data Hub. The dashboard is built with flexdashboard and Shiny, as shown in R for Data Science, Chapter 29.
+
+Explore data
+=====================================
+
+Column {.sidebar}
+-------------------------------------
+
+```{r}
+# Shiny inputs (R4DS 29.7.2): the charts on this page use input$...
+radioButtons("explore_dataset", "Dataset",
+             choices = c("Both", "Pacific", "Comparative"), selected = "Both")
+
+selectInput("explore_var", "Variable", choices = var_names, selected = "log_tb")
+
+radioButtons("explore_chart", "Chart",
+             choices = c("Scatterplot with life expectancy" = "scatter",
+                         "Histogram" = "hist",
+                         "Boxplot by income level" = "box"))
+
+checkboxGroupInput("explore_income", "Income level",
+                   choices = income_order, selected = income_order)
+
+sliderInput("explore_years", "Years", min = 2000, max = 2024,
+            value = c(2000, 2024), sep = "")
+```
+
+Column
+-------------------------------------
+
+### Chart
+
+```{r}
+# The data after the filters are applied. It updates when an input changes.
+explore_data <- reactive({
+  d <- both %>%
+    filter(income_level %in% input$explore_income,
+           year >= input$explore_years[1], year <= input$explore_years[2])
+  if (input$explore_dataset != "Both") d <- filter(d, dataset == input$explore_dataset)
+  d
+})
+
+renderPlot({
+  d <- explore_data()
+  validate(need(nrow(d) > 0, "No data for this selection. Try other filters."))
+  x_label <- names(var_names)[var_names == input$explore_var]
+
+  if (input$explore_chart == "scatter") {
+    # Put the Pacific rows last, so their dots are drawn on top
+    d <- arrange(d, dataset == "Pacific")
+    ggplot(d, aes(x = .data[[input$explore_var]], y = life_expectancy)) +
+      geom_point(aes(colour = dataset), alpha = 0.3) +
+      # Black trend lines: solid for Pacific, dashed for Comparative
+      geom_smooth(aes(linetype = dataset), method = "lm", formula = y ~ x,
+                  se = FALSE, colour = "black", linewidth = 1.2) +
+      scale_colour_manual(values = dataset_colours) +
+      scale_linetype_manual(values = c("Pacific" = "solid", "Comparative" = "dashed")) +
+      labs(x = x_label, y = "Life expectancy (years)",
+           colour = "Dataset (dots)", linetype = "Trend line") +
+      theme_minimal(base_size = 13)
+  } else if (input$explore_chart == "hist") {
+    ggplot(d, aes(x = .data[[input$explore_var]], fill = dataset)) +
+      geom_histogram(bins = 30, alpha = 0.7, position = "identity") +
+      scale_fill_manual(values = dataset_colours) +
+      labs(x = x_label, y = "Count", fill = "Dataset") +
+      theme_minimal(base_size = 13)
+  } else {
+    ggplot(d, aes(x = income_level, y = .data[[input$explore_var]], fill = dataset)) +
+      geom_boxplot(alpha = 0.7) +
+      scale_fill_manual(values = dataset_colours) +
+      labs(x = "Income level", y = x_label, fill = "Dataset") +
+      theme_minimal(base_size = 13)
+  }
+})
+```
+
+### Summary of the selected data {data-height=200}
+
+```{r}
+renderTable({
+  d <- explore_data()
+  validate(need(nrow(d) > 0, ""))
+  d %>%
+    group_by(Dataset = dataset) %>%
+    summarise(Rows = n(),
+              Countries = n_distinct(country_name),
+              Mean = mean(.data[[input$explore_var]]),
+              Median = median(.data[[input$explore_var]]),
+              Min = min(.data[[input$explore_var]]),
+              Max = max(.data[[input$explore_var]]),
+              `Correlation with life expectancy` =
+                cor(.data[[input$explore_var]], life_expectancy),
+              .groups = "drop")
+}, digits = 2)
+```
+
+Pacific trends
+=====================================
+
+Column {.sidebar}
+-------------------------------------
+
+```{r}
+selectInput("trend_countries", "Pacific countries",
+            choices = sort(unique(pacific$country_name)),
+            selected = c("Fiji", "Kiribati", "Samoa", "Tonga"),
+            multiple = TRUE)
+
+radioButtons("trend_var", "Show",
+             choices = c("Life expectancy (years)" = "life_expectancy",
+                         "TB incidence (per 100,000)" = "tb_incidence",
+                         "Health spending (% of GDP)" = "health_expenditure_pct_gdp"))
+
+checkboxInput("trend_world", "Add the world average", value = TRUE)
+```
+
+Column
+-------------------------------------
+
+### Over time
+
+```{r}
+renderPlot({
+  validate(need(length(input$trend_countries) > 0, "Pick at least one country."))
+  d <- filter(pacific, country_name %in% input$trend_countries)
+  y_label <- c(life_expectancy = "Life expectancy (years)",
+               tb_incidence = "TB incidence (per 100,000)",
+               health_expenditure_pct_gdp = "Health spending (% of GDP)")[input$trend_var]
+
+  p <- ggplot(d, aes(x = year, y = .data[[input$trend_var]], colour = country_name)) +
+    geom_line(linewidth = 1) +
+    geom_point() +
+    labs(x = "Year", y = y_label, colour = "Country") +
+    theme_minimal(base_size = 13)
+
+  if (input$trend_world) {
+    world_avg <- comparative %>%
+      group_by(year) %>%
+      summarise(value = mean(.data[[input$trend_var]]), .groups = "drop")
+    p <- p + geom_line(data = world_avg, aes(x = year, y = value),
+                       inherit.aes = FALSE, colour = "black",
+                       linetype = "dashed", linewidth = 1) +
+      labs(caption = "Dashed black line = average of the rest of the world")
+  }
+  p
+})
+```
+
+Model results
+=====================================
+
+Column {.sidebar}
+-------------------------------------
+
+```{r}
+radioButtons("model_test", "How the models were tested",
+             choices = c("Random 10-fold CV", "CV by country",
+                         "In-sample (training rows)"),
+             selected = "Random 10-fold CV")
+
+radioButtons("model_metric", "Measure",
+             choices = c("R-squared (higher is better)" = "Rsquared",
+                         "RMSE in years (lower is better)" = "RMSE",
+                         "MAE in years (lower is better)" = "MAE"))
+
+radioButtons("model_dataset", "Dataset for the model details",
+             choices = c("Pacific", "Comparative"))
+```
+
+**Random 10-fold CV:** each row is predicted by a model that did not learn from it.
+
+**CV by country:** each country is predicted by a model that never saw that country. This is the hardest test.
+
+**In-sample:** the model predicts the rows it learned from, so it looks better than it really is.
+
+Column
+-------------------------------------
+
+### How well each model predicts life expectancy
+
+```{r}
+renderPlot({
+  d <- filter(cv_performance, Test == input$model_test)
+  y_label <- c(Rsquared = "R-squared", RMSE = "RMSE (years)",
+               MAE = "MAE (years)")[input$model_metric]
+
+  ggplot(d, aes(x = Dataset, y = .data[[input$model_metric]], fill = Model)) +
+    geom_col(position = "dodge") +
+    geom_text(aes(label = round(.data[[input$model_metric]], 2)),
+              position = position_dodge(width = 0.9), vjust = -0.4) +
+    geom_hline(yintercept = 0, linewidth = 0.4) +
+    scale_fill_manual(values = c("Linear regression" = "grey60",
+                                 "Random forest" = "#2a9d8f")) +
+    labs(x = "", y = y_label, fill = "Model", title = input$model_test) +
+    theme_minimal(base_size = 13)
+})
+```
+
+### All results {data-height=300}
+
+```{r}
+renderTable({
+  cv_performance %>%
+    arrange(Dataset, Test, Model) %>%
+    mutate(Dataset = as.character(Dataset), Test = as.character(Test)) %>%
+    rename(`RMSE (years)` = RMSE, `MAE (years)` = MAE, `R-squared` = Rsquared)
+}, digits = 2)
+```
+
+Column
+-------------------------------------
+
+### Linear regression: effect of each predictor
+
+```{r}
+renderTable({
+  fit <- if (input$model_dataset == "Pacific") lm_pacific else lm_comparative
+  s <- summary(fit)$coefficients
+  tibble(Predictor = rownames(s),
+         `Effect (years)` = s[, 1],
+         `p value` = ifelse(s[, 4] < 0.001, "< 0.001", sprintf("%.3f", s[, 4])),
+         Significant = ifelse(s[, 4] < 0.05, "Yes", "No")) %>%
+    filter(Predictor != "(Intercept)")
+}, digits = 3)
+```
+
+### Random forest: which predictors matter most
+
+```{r}
+renderPlot({
+  fit <- if (input$model_dataset == "Pacific") rf_pacific else rf_comparative
+  imp <- fit$variable.importance
+  tibble(Predictor = names(imp), Importance = imp / sum(imp) * 100) %>%
+    ggplot(aes(x = reorder(Predictor, Importance), y = Importance)) +
+    geom_col(fill = dataset_colours[input$model_dataset]) +
+    coord_flip() +
+    labs(x = "", y = "Importance (% of total)") +
+    theme_minimal(base_size = 12)
+})
+```
+
+Predict
+=====================================
+
+Column {.sidebar}
+-------------------------------------
+
+```{r}
+radioButtons("pred_dataset", "Use the model built on",
+             choices = c("Pacific", "Comparative"))
+
+sliderInput("pred_tb", "TB incidence (per 100,000)",
+            min = 0, max = 1000, value = 150, step = 5)
+
+sliderInput("pred_health", "Health spending (% of GDP)",
+            min = 1, max = 25, value = 6, step = 0.5)
+
+sliderInput("pred_measles", "Measles vaccination (%)",
+            min = 10, max = 100, value = 85)
+
+sliderInput("pred_fertility", "Fertility rate (births per woman)",
+            min = 1, max = 7, value = 3, step = 0.1)
+
+# The income menu only shows the groups in the chosen dataset
+renderUI({
+  levels_here <- if (input$pred_dataset == "Pacific") levels(pacific$income_level)
+                 else levels(comparative$income_level)
+  selectInput("pred_income", "Income level", choices = levels_here,
+              selected = "Lower middle income")
+})
+```
+
+Column
+-------------------------------------
+
+### Predicted life expectancy
+
+```{r}
+renderTable({
+  req(input$pred_income)
+  train <- if (input$pred_dataset == "Pacific") pacific else comparative
+  new_row <- tibble(log_tb = log(input$pred_tb + 1),
+                    health_expenditure_pct_gdp = input$pred_health,
+                    immunization_measles = input$pred_measles,
+                    fertility_rate = input$pred_fertility,
+                    income_level = factor(input$pred_income,
+                                          levels = levels(train$income_level)))
+  lm_fit <- if (input$pred_dataset == "Pacific") lm_pacific else lm_comparative
+  rf_fit <- if (input$pred_dataset == "Pacific") rf_pacific else rf_comparative
+
+  tibble(Model = c("Linear regression", "Random forest"),
+         `Predicted life expectancy (years)` =
+           c(predict(lm_fit, newdata = new_row),
+             predict(rf_fit, data = new_row)$predictions))
+}, digits = 1)
+```
+
+Try moving TB up and down to see how much the prediction changes. The two models can give different answers, because random forest can find patterns that a straight line cannot.
+
+Data gaps
+=====================================
+
+Column {data-width=400}
+-------------------------------------
+
+### The two datasets
+
+```{r}
+renderTable(dataset_table)
+```
+
+Column {data-width=600}
+-------------------------------------
+
+### Variables missing much more often in the Pacific (before cleaning)
+
+```{r}
+renderPlot({
+  ggplot(data_gaps, aes(x = reorder(variable, gap))) +
+    geom_col(aes(y = pacific, fill = "Pacific"), alpha = 0.8) +
+    geom_point(aes(y = comparative, colour = "Comparative"), size = 3) +
+    coord_flip() +
+    scale_fill_manual(values = c("Pacific" = col_pac)) +
+    scale_colour_manual(values = c("Comparative" = col_cmp)) +
+    labs(x = "", y = "% missing before cleaning", fill = "", colour = "") +
+    theme_minimal(base_size = 12)
+})
+```

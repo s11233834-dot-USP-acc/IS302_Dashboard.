@@ -1,0 +1,289 @@
+country_name,year,life_expectancy,tb_incidence,health_expenditure_pct_gdp,immunization_measles,fertility_rate,income_level
+Fiji,2000,66.194,49,3.42441177,81,2.992,Upper middle income
+Fiji,2001,66.205,58,2.90547299,83,2.973,Upper middle income
+Fiji,2002,65.492,44,2.98349524,85,2.968,Upper middle income
+Fiji,2003,65.653,51,2.97298193,86,2.957,Upper middle income
+Fiji,2004,65.841,35,3.25768542,88,2.941,Upper middle income
+Fiji,2005,65.983,32,3.25656676,90,2.917,Upper middle income
+Fiji,2006,66.126,27,3.34798193,92,2.905,Upper middle income
+Fiji,2007,66.161,22,3.41514993,94,2.872,Upper middle income
+Fiji,2008,66.32,24,3.18467116,95,2.819,Upper middle income
+Fiji,2009,66.347,32,3.53587627,95,2.76,Upper middle income
+Fiji,2010,66.778,42,3.41664124,96,2.696,Upper middle income
+Fiji,2011,66.88,46,3.14293504,96,2.631,Upper middle income
+Fiji,2012,65.812,43,3.2655499,98,2.612,Upper middle income
+Fiji,2013,66.545,51,3.20040679,94,2.604,Upper middle income
+Fiji,2014,66.581,74,3.36860466,99,2.591,Upper middle income
+Fiji,2015,66.48,69,3.32468939,98,2.567,Upper middle income
+Fiji,2016,66.657,59,3.27979708,97,2.518,Upper middle income
+Fiji,2017,67.06,68,3.18689561,99,2.461,Upper middle income
+Fiji,2018,66.965,73,4.10572624,95,2.419,Upper middle income
+Fiji,2019,67.009,89,4.28229284,94,2.385,Upper middle income
+Fiji,2020,66.924,81,5.28987408,92,2.357,Upper middle income
+Fiji,2021,64.904,63,7.06084681,98,2.332,Upper middle income
+Fiji,2022,67.148,105,4.01752949,99,2.305,Upper middle income
+Fiji,2023,67.316,72,3.61524153,98,2.281,Upper middle income
+"Micronesia, Fed. Sts.",2000,64.317,281,7.76511145,85,4.217,Lower middle income
+"Micronesia, Fed. Sts.",2001,64.801,312,8.48781967,84,4.084,Lower middle income
+"Micronesia, Fed. Sts.",2002,63.907,372,7.96301365,88,3.934,Lower middle income
+"Micronesia, Fed. Sts.",2003,64.915,304,9.65028286,91,3.785,Lower middle income
+"Micronesia, Fed. Sts.",2004,64.898,332,12.23538685,85,3.681,Lower middle income
+"Micronesia, Fed. Sts.",2005,64.906,271,17.94844818,96,3.595,Lower middle income
+"Micronesia, Fed. Sts.",2006,64.859,271,10.87018681,83,3.514,Lower middle income
+"Micronesia, Fed. Sts.",2007,64.844,347,11.23334217,92,3.439,Lower middle income
+"Micronesia, Fed. Sts.",2008,64.849,388,12.08326721,86,3.368,Lower middle income
+"Micronesia, Fed. Sts.",2009,64.865,335,12.68854141,86,3.313,Lower middle income
+"Micronesia, Fed. Sts.",2010,64.892,354,13.3306675,80,3.271,Lower middle income
+"Micronesia, Fed. Sts.",2011,64.969,317,13.222826,92,3.223,Lower middle income
+"Micronesia, Fed. Sts.",2012,65.08,305,12.39077377,91,3.18,Lower middle income
+"Micronesia, Fed. Sts.",2013,65.179,312,12.21770954,91,3.133,Lower middle income
+"Micronesia, Fed. Sts.",2014,65.294,391,11.83491802,83,3.091,Lower middle income
+"Micronesia, Fed. Sts.",2015,65.306,214,12.62341213,74,3.049,Lower middle income
+"Micronesia, Fed. Sts.",2016,65.576,293,13.33481121,70,3.001,Lower middle income
+"Micronesia, Fed. Sts.",2017,65.761,262,12.40742493,76,2.957,Lower middle income
+"Micronesia, Fed. Sts.",2018,65.943,187,11.93961334,73,2.922,Lower middle income
+"Micronesia, Fed. Sts.",2019,66.196,180,11.87363148,78,2.883,Lower middle income
+"Micronesia, Fed. Sts.",2020,65.878,178,11.98479271,79,2.852,Lower middle income
+"Micronesia, Fed. Sts.",2021,66.152,137,11.37430477,64,2.818,Lower middle income
+"Micronesia, Fed. Sts.",2022,66.961,91,12.62718964,69,2.785,Lower middle income
+"Micronesia, Fed. Sts.",2023,67.198,397,12.88087559,86,2.748,Lower middle income
+Kiribati,2000,64.674,1280,7.77379847,80,4.071,Lower middle income
+Kiribati,2001,64.918,908,11.90547657,76,3.957,Lower middle income
+Kiribati,2002,65.123,888,11.4402895,88,3.814,Lower middle income
+Kiribati,2003,65.287,1220,10.05060768,72,3.702,Lower middle income
+Kiribati,2004,65.416,1260,12.17176056,56,3.734,Lower middle income
+Kiribati,2005,65.517,1280,11.36301994,85,3.76,Lower middle income
+Kiribati,2006,65.601,1320,11.30852318,61,3.815,Lower middle income
+Kiribati,2007,65.677,1060,10.9454546,93,3.865,Lower middle income
+Kiribati,2008,65.746,974,13.51428604,72,3.899,Lower middle income
+Kiribati,2009,65.808,742,12.73888874,82,3.905,Lower middle income
+Kiribati,2010,65.859,704,8.76666641,89,3.898,Lower middle income
+Kiribati,2011,65.896,809,7.98947382,90,3.878,Lower middle income
+Kiribati,2012,65.908,784,7.9499998099999996,91,3.768,Lower middle income
+Kiribati,2013,65.898,888,8.7081337,91,3.643,Lower middle income
+Kiribati,2014,65.869,870,8.9549551,88,3.521,Lower middle income
+Kiribati,2015,65.831,1010,7.21568632,84,3.438,Lower middle income
+Kiribati,2016,65.799,1010,9.04265118,80,3.375,Lower middle income
+Kiribati,2017,65.787,718,9.68424225,81,3.339,Lower middle income
+Kiribati,2018,65.807,582,10.89694214,84,3.318,Lower middle income
+Kiribati,2019,65.866,715,10.16600227,94,3.29,Lower middle income
+Kiribati,2020,65.205,655,13.65645027,82,3.254,Lower middle income
+Kiribati,2021,64.148,547,11.83228588,80,3.219,Lower middle income
+Kiribati,2022,66.269,588,10.52553844,85,3.182,Lower middle income
+Kiribati,2023,66.473,908,10.94525623,79,3.147,Lower middle income
+Marshall Islands,2000,63.323,190,13.52467632,94,4.695,Upper middle income
+Marshall Islands,2001,63.735,304,11.18965435,64,4.583,Upper middle income
+Marshall Islands,2002,63.848,270,12.06634617,80,4.488,Upper middle income
+Marshall Islands,2003,63.956,311,13.3324337,90,4.418,Upper middle income
+Marshall Islands,2004,64.044,594,14.15128136,70,4.34,Upper middle income
+Marshall Islands,2005,64.112,552,18.45293236,86,4.276,Upper middle income
+Marshall Islands,2006,64.207,643,22.29854774,96,4.197,Upper middle income
+Marshall Islands,2007,64.259,683,16.82522392,94,4.09,Upper middle income
+Marshall Islands,2008,64.3,508,18.97963715,86,3.967,Upper middle income
+Marshall Islands,2009,64.395,541,18.7292881,78,3.83,Upper middle income
+Marshall Islands,2010,64.498,700,17.73354912,97,3.673,Upper middle income
+Marshall Islands,2011,64.641,498,11.35905361,88,3.527,Upper middle income
+Marshall Islands,2012,64.776,517,11.66154385,78,3.382,Upper middle income
+Marshall Islands,2013,64.954,532,12.13685322,79,3.247,Upper middle income
+Marshall Islands,2014,65.11,509,12.04489326,79,3.18,Upper middle income
+Marshall Islands,2015,65.292,498,14.78209972,75,3.131,Upper middle income
+Marshall Islands,2016,65.477,649,14.62816238,75,3.091,Upper middle income
+Marshall Islands,2017,65.673,745,12.02498436,83,3.064,Upper middle income
+Marshall Islands,2018,65.87,1610,14.46723938,83,3.038,Upper middle income
+Marshall Islands,2019,66.047,877,14.98994541,85,3.012,Upper middle income
+Marshall Islands,2020,65.387,581,12.12413406,89,2.989,Upper middle income
+Marshall Islands,2021,65.421,478,12.49257088,85,2.964,Upper middle income
+Marshall Islands,2022,66.725,427,13.60796833,81,2.936,Upper middle income
+Marshall Islands,2023,66.945,928,13.40528965,88,2.919,Upper middle income
+Nauru,2000,59.574,39,18.96671295,8,3.543,High income
+Nauru,2001,59.482,30,16.22330093,95,3.461,High income
+Nauru,2002,59.427,50,13.80812454,40,3.4,High income
+Nauru,2003,59.359,30,9.97444248,53,3.388,High income
+Nauru,2004,59.346,65,6.87889576,67,3.378,High income
+Nauru,2005,59.361,109,10.82081795,80,3.377,High income
+Nauru,2006,59.409,120,12.41761494,99,3.4,High income
+Nauru,2007,59.49,30,24.23069,99,3.504,High income
+Nauru,2008,59.675,50,23.00409317,99,3.665,High income
+Nauru,2009,59.852,40,12.31576252,99,3.847,High income
+Nauru,2010,60.074,30,12.69640064,99,4.019,High income
+Nauru,2011,60.287,50,9.97123718,99,4.117,High income
+Nauru,2012,60.533,60,8.84148979,96,4.115,High income
+Nauru,2013,60.701,67,9.56899357,97,4.098,High income
+Nauru,2014,60.834,74,8.1214447,98,4.085,High income
+Nauru,2015,60.897,91,13.91331863,98,4.075,High income
+Nauru,2016,60.996,90,10.95251656,98,4.027,High income
+Nauru,2017,61.101,80,11.4886446,95,3.879,High income
+Nauru,2018,61.238,44,11.09015656,99,3.683,High income
+Nauru,2019,61.393,147,11.56155682,95,3.531,High income
+Nauru,2020,61.527,112,11.55650234,98,3.466,High income
+Nauru,2021,61.331,179,10.85399055,98,3.425,High income
+Nauru,2022,61.93,161,18.34229279,98,3.379,High income
+Nauru,2023,62.109,152,18.21076012,98,3.331,High income
+Palau,2000,64.499,56,8.63728905,83,1.819,High income
+Palau,2001,64.8,55,7.79659462,91,1.87,High income
+Palau,2002,65.076,56,7.28691149,99,1.923,High income
+Palau,2003,65.446,46,8.095788,99,1.962,High income
+Palau,2004,65.816,25,9.13479805,99,1.989,High income
+Palau,2005,66.219,50,8.63174248,98,2.017,High income
+Palau,2006,66.633,61,8.73999214,98,1.996,High income
+Palau,2007,67.113,57,8.83709908,91,1.968,High income
+Palau,2008,67.562,79,8.41378212,97,1.947,High income
+Palau,2009,67.99,102,9.63057423,75,1.935,High income
+Palau,2010,68.347,103,10.93099976,39,1.937,High income
+Palau,2011,68.638,66,9.9432106,85,1.965,High income
+Palau,2012,68.863,23,10.24609089,91,2.006,High income
+Palau,2013,68.981,45,10.92691708,99,2.054,High income
+Palau,2014,69.062,79,10.71111488,83,2.032,High income
+Palau,2015,69.07,79,9.76325321,95,2.002,High income
+Palau,2016,69.046,129,10.01226997,96,2.055,High income
+Palau,2017,69.019,112,10.90419006,93,2.019,High income
+Palau,2018,68.989,95,11.19109821,90,1.97,High income
+Palau,2019,68.982,34,12.17405796,97,1.984,High income
+Palau,2020,68.689,56,13.31541061,93,1.972,High income
+Palau,2021,68.563,45,14.55276012,93,1.95,High income
+Palau,2022,68.922,39,14.87842083,96,1.927,High income
+Palau,2023,69.269,85,10.85468197,96,1.907,High income
+Papua New Guinea,2000,61.609,1060,2.0184176,69,4.525,Lower middle income
+Papua New Guinea,2001,61.647,972,2.3006382,65,4.469,Lower middle income
+Papua New Guinea,2002,61.643,887,2.77562952,73,4.419,Lower middle income
+Papua New Guinea,2003,61.741,810,2.4531486,77,4.362,Lower middle income
+Papua New Guinea,2004,61.795,741,2.59372902,77,4.283,Lower middle income
+Papua New Guinea,2005,61.868,679,2.44874048,82,4.22,Lower middle income
+Papua New Guinea,2006,62.018,628,2.42600322,82,4.148,Lower middle income
+Papua New Guinea,2007,62.211,584,2.42102122,72,4.076,Lower middle income
+Papua New Guinea,2008,62.511,549,2.13526058,66,4.015,Lower middle income
+Papua New Guinea,2009,62.772,527,2.32937527,65,3.941,Lower middle income
+Papua New Guinea,2010,63.056,528,2.10756016,63,3.883,Lower middle income
+Papua New Guinea,2011,63.382,547,2.29397798,66,3.816,Lower middle income
+Papua New Guinea,2012,63.639,563,2.66693544,71,3.746,Lower middle income
+Papua New Guinea,2013,63.927,582,2.99727893,72,3.684,Lower middle income
+Papua New Guinea,2014,64.198,611,3.27119064,65,3.625,Lower middle income
+Papua New Guinea,2015,64.473,629,1.81881714,57,3.558,Lower middle income
+Papua New Guinea,2016,64.7,626,2.33063054,46,3.495,Lower middle income
+Papua New Guinea,2017,64.923,616,2.22970986,41,3.432,Lower middle income
+Papua New Guinea,2018,65.114,611,2.30051899,37,3.382,Lower middle income
+Papua New Guinea,2019,65.331,614,2.3253386,37,3.322,Lower middle income
+Papua New Guinea,2020,65.075,616,2.30193973,44,3.274,Lower middle income
+Papua New Guinea,2021,64.358,622,2.33994722,35,3.215,Lower middle income
+Papua New Guinea,2022,65.274,632,2.61463141,41,3.165,Lower middle income
+Papua New Guinea,2023,66.134,647,2.87081432,52,3.099,Lower middle income
+Solomon Islands,2000,67.116,282,4.82778931,91,4.757,Lower middle income
+Solomon Islands,2001,67.237,264,6.60712814,83,4.673,Lower middle income
+Solomon Islands,2002,67.35,224,10.10627556,78,4.602,Lower middle income
+Solomon Islands,2003,67.479,249,7.07724714,82,4.539,Lower middle income
+Solomon Islands,2004,67.628,280,7.72556639,87,4.466,Lower middle income
+Solomon Islands,2005,67.79,317,9.01794529,87,4.411,Lower middle income
+Solomon Islands,2006,67.968,271,8.00802231,99,4.39,Lower middle income
+Solomon Islands,2007,67.845,266,7.18583059,90,4.372,Lower middle income
+Solomon Islands,2008,68.336,239,5.50656271,71,4.358,Lower middle income
+Solomon Islands,2009,68.397,209,6.6096673,69,4.349,Lower middle income
+Solomon Islands,2010,68.669,177,4.66862011,74,4.341,Lower middle income
+Solomon Islands,2011,68.824,195,5.03008652,77,4.335,Lower middle income
+Solomon Islands,2012,68.961,165,4.88045692,87,4.332,Lower middle income
+Solomon Islands,2013,69.007,153,4.58030891,76,4.325,Lower middle income
+Solomon Islands,2014,68.984,137,4.88962364,76,4.36,Lower middle income
+Solomon Islands,2015,69.323,155,4.45310211,75,4.291,Lower middle income
+Solomon Islands,2016,69.501,141,4.52952909,82,4.2,Lower middle income
+Solomon Islands,2017,69.652,124,4.16556406,84,4.06,Lower middle income
+Solomon Islands,2018,69.806,124,3.86440825,93,3.93,Lower middle income
+Solomon Islands,2019,69.981,111,4.43728065,81,3.8,Lower middle income
+Solomon Islands,2020,69.258,97,4.89478445,81,3.749,Lower middle income
+Solomon Islands,2021,68.89,108,4.94795895,67,3.694,Lower middle income
+Solomon Islands,2022,70.409,97,4.82418394,90,3.62,Lower middle income
+Solomon Islands,2023,70.528,97,5.36366177,68,3.557,Lower middle income
+Tonga,2000,69.635,23,2.90389204,95,4.159,Upper middle income
+Tonga,2001,69.8,12,3.42501593,93,4.127,Upper middle income
+Tonga,2002,70.03,28,3.58957744,90,4.138,Upper middle income
+Tonga,2003,70.228,15,3.43583083,99,4.175,Upper middle income
+Tonga,2004,70.433,11,4.50741625,99,4.186,Upper middle income
+Tonga,2005,70.56,17,4.38560247,99,4.195,Upper middle income
+Tonga,2006,70.71,17,5.47225046,99,4.141,Upper middle income
+Tonga,2007,70.887,22,4.73330021,99,4.086,Upper middle income
+Tonga,2008,71.041,12,6.05759716,99,4.012,Upper middle income
+Tonga,2009,70.949,7.5,3.97380877,99,3.946,Upper middle income
+Tonga,2010,71.319,10,4.81632328,99,3.879,Upper middle income
+Tonga,2011,71.437,8.4,4.73990822,99,3.829,Upper middle income
+Tonga,2012,71.546,10,8.13786125,95,3.768,Upper middle income
+Tonga,2013,71.65,9.3,4.16768837,99,3.696,Upper middle income
+Tonga,2014,71.721,12,5.19583178,99,3.619,Upper middle income
+Tonga,2015,71.851,13,4.78137636,99,3.54,Upper middle income
+Tonga,2016,71.951,7.6,5.22591066,98,3.463,Upper middle income
+Tonga,2017,72.066,10,5.62952805,99,3.388,Upper middle income
+Tonga,2018,72.169,8.5,6.12240648,99,3.326,Upper middle income
+Tonga,2019,72.292,9.5,5.74527884,99,3.274,Upper middle income
+Tonga,2020,72.379,7.6,5.55919838,99,3.234,Upper middle income
+Tonga,2021,72.13,6.6,7.06254101,99,3.198,Upper middle income
+Tonga,2022,72.635,1.9,7.95276737,99,3.171,Upper middle income
+Tonga,2023,72.895,7.6,7.36037779,99,3.129,Upper middle income
+Tuvalu,2000,63.536,168,22.2817421,81,3.841,Upper middle income
+Tuvalu,2001,63.709,167,17.96548271,99,3.749,Upper middle income
+Tuvalu,2002,63.825,135,11.83691788,99,3.637,Upper middle income
+Tuvalu,2003,63.897,320,13.70337105,95,3.579,Upper middle income
+Tuvalu,2004,63.989,173,9.33149719,97,3.553,Upper middle income
+Tuvalu,2005,64.096,121,10.06694317,62,3.546,Upper middle income
+Tuvalu,2006,64.247,90,12.17554379,84,3.525,Upper middle income
+Tuvalu,2007,64.402,177,10.45884991,95,3.446,Upper middle income
+Tuvalu,2008,64.516,165,10.33977222,93,3.415,Upper middle income
+Tuvalu,2009,64.693,172,13.0113821,90,3.425,Upper middle income
+Tuvalu,2010,64.834,132,16.21352577,85,3.442,Upper middle income
+Tuvalu,2011,64.96,111,14.74390411,98,3.463,Upper middle income
+Tuvalu,2012,65.079,174,13.87374306,98,3.47,Upper middle income
+Tuvalu,2013,65.171,164,13.80392075,96,3.389,Upper middle income
+Tuvalu,2014,65.278,137,14.52762222,94,3.33,Upper middle income
+Tuvalu,2015,65.365,182,13.44188595,94,3.308,Upper middle income
+Tuvalu,2016,65.51,183,18.32539177,96,3.297,Upper middle income
+Tuvalu,2017,65.683,212,24.45763206,95,3.301,Upper middle income
+Tuvalu,2018,65.871,251,18.42199898,88,3.328,Upper middle income
+Tuvalu,2019,66.109,284,22.22294044,96,3.331,Upper middle income
+Tuvalu,2020,66.357,288,17.88715363,93,3.309,Upper middle income
+Tuvalu,2021,65.824,216,18.57411194,93,3.277,Upper middle income
+Tuvalu,2022,66.852,260,21.28792,90,3.244,Upper middle income
+Tuvalu,2023,67.105,163,27.08968544,98,3.208,Upper middle income
+Vanuatu,2000,68.586,331,3.30683255,61,4.537,Lower middle income
+Vanuatu,2001,68.722,286,3.38728333,60,4.495,Lower middle income
+Vanuatu,2002,68.836,248,3.90437746,58,4.382,Lower middle income
+Vanuatu,2003,68.933,214,3.50691938,57,4.293,Lower middle income
+Vanuatu,2004,68.985,185,3.53991532,56,4.214,Lower middle income
+Vanuatu,2005,69.166,162,3.30490398,54,4.133,Lower middle income
+Vanuatu,2006,69.126,143,3.32229328,53,4.1,Lower middle income
+Vanuatu,2007,69.144,132,3.10786796,56,4.117,Lower middle income
+Vanuatu,2008,69.302,127,3.13883376,62,4.159,Lower middle income
+Vanuatu,2009,69.422,122,3.25181413,65,4.157,Lower middle income
+Vanuatu,2010,69.57,116,3.52637076,71,4.126,Lower middle income
+Vanuatu,2011,69.729,110,3.59770703,75,4.093,Lower middle income
+Vanuatu,2012,69.898,104,3.93631458,80,4.059,Lower middle income
+Vanuatu,2013,69.986,97,4.39240074,84,4.039,Lower middle income
+Vanuatu,2014,70.043,89,3.64018846,90,3.999,Lower middle income
+Vanuatu,2015,70.163,82,4.1583128,76,3.952,Lower middle income
+Vanuatu,2016,70.397,75,2.98904061,84,3.915,Lower middle income
+Vanuatu,2017,70.5,67,2.88118052,80,3.875,Lower middle income
+Vanuatu,2018,70.626,61,3.44049001,75,3.834,Lower middle income
+Vanuatu,2019,70.783,56,3.49615431,80,3.79,Lower middle income
+Vanuatu,2020,70.385,52,4.12128973,78,3.738,Lower middle income
+Vanuatu,2021,69.952,48,4.58828115,50,3.696,Lower middle income
+Vanuatu,2022,71.302,46,4.05895281,70,3.647,Lower middle income
+Vanuatu,2023,71.477,45,4.1186676,70,3.596,Lower middle income
+Samoa,2000,70.791,24,4.28232527,93,4.523,Upper middle income
+Samoa,2001,71.028,12,3.81804991,92,4.477,Upper middle income
+Samoa,2002,71.233,17,4.49205494,99,4.444,Upper middle income
+Samoa,2003,71.441,15,4.17237139,62,4.392,Upper middle income
+Samoa,2004,71.508,18,4.52578545,25,4.343,Upper middle income
+Samoa,2005,71.487,13,4.63365459,57,4.322,Upper middle income
+Samoa,2006,71.62,13,4.88451385,54,4.322,Upper middle income
+Samoa,2007,71.605,11,4.7446332,63,4.358,Upper middle income
+Samoa,2008,71.531,6.3,4.53258085,44,4.417,Upper middle income
+Samoa,2009,69.486,8.4,5.12732029,45,4.466,Upper middle income
+Samoa,2010,71.451,7.3,5.15268326,56,4.52,Upper middle income
+Samoa,2011,71.393,10,5.38357162,59,4.56,Upper middle income
+Samoa,2012,71.159,11,4.9883461,76,4.545,Upper middle income
+Samoa,2013,71.229,11,6.21823883,92,4.491,Upper middle income
+Samoa,2014,71.142,11,6.36147165,85,4.423,Upper middle income
+Samoa,2015,71.06,9.4,6.01321936,75,4.344,Upper middle income
+Samoa,2016,71.003,6.4,5.63959885,75,4.262,Upper middle income
+Samoa,2017,70.991,15,5.16343021,67,4.196,Upper middle income
+Samoa,2018,71.052,5.3,4.77525806,40,4.136,Upper middle income
+Samoa,2019,70.269,8.6,5.64761591,96,4.061,Upper middle income
+Samoa,2020,70.727,6.1,6.09105825,66,4.002,Upper middle income
+Samoa,2021,71.096,6.1,7.19651461,62,3.94,Upper middle income
+Samoa,2022,71.55,4.2,6.93412352,82,3.883,Upper middle income
+Samoa,2023,71.698,6,6.78103304,87,3.829,Upper middle income
